@@ -1,0 +1,16 @@
+{
+    "manifest_version": 2,
+    "name": "Float Highlighter",
+    "version": "1.0",
+  
+    "description": "Lightning items in csgofloat DB",
+    "icons": {
+    },
+  
+    "content_scripts": [
+      {
+        "matches": ["https://csgofloat.com/db*"],
+        "js": ["ParseFloats.js"]
+      }
+    ]
+}
