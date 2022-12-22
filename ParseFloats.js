@@ -6,34 +6,54 @@ window.onload = function () {
 };
 
 const checkItems = () => {
-  const tableItems = document.querySelector(".mat-table").children[1].children;
-  for (let i = 1; i < tableItems.length; i++) {
+  const tableItems = Array.from(document.querySelector(".mat-table").children[1].children);
+  tableItems.forEach((item) => {
+    const cellSkinName = item.cells[1];
+    const skinName = cellSkinName.textContent;
+    const itemUrl = item.querySelector('a').href;
+    const itemFloat = parseFloat(item.cells[2].textContent);
+
     // починка ссылок фаз doppler's
-    if (document.querySelectorAll(".cdk-column-link")[i].querySelector('a').href.includes('Doppler')) {
-      document.querySelectorAll(".cdk-column-link")[i].querySelector('a').href = fixDopplerUrl(document.querySelectorAll(".cdk-column-link")[i].querySelector('a').href);
-      console.log(fixDopplerUrl(document.querySelectorAll(".cdk-column-link")[i].querySelector('a').href));
-    }
+    isItemDoppler(itemUrl, item);
+    
 
     // проверка на принадлежности к семейству поверхностной закалки
-    if (document.querySelectorAll(".cdk-column-name")[i].textContent.includes('Case Hardened')) {
-      document.querySelectorAll(".cdk-column-name")[i].style.color = "cyan";
-    }
+    isItemCaseHardened(skinName, cellSkinName);
+    
 
     // проверка на принадлежности к флоту от 0.15 до 0.18
-    if (parseFloat(document.querySelectorAll(".cdk-column-float")[i].textContent) >= 0.15 && parseFloat(document.querySelectorAll(".cdk-column-float")[i].textContent) <= 0.18) {
-      document.querySelectorAll(".cdk-column-float")[i].style.color = "green";
+    if ((itemFloat >= 0.15) && (itemFloat <= 0.18)) {
+      item.cells[2].style.color = "rgb(255, 105, 57)";
     }
+  });
+};
+
+const isItemHasCoolFloat = (itemFloat, item) => {
+ 
+};
+
+
+const isItemCaseHardened = (itemName, item) => {
+  if (itemName.includes('Case Hardened')) {
+    item.style.color = "cyan";
+  }
+};
+
+
+const isItemDoppler = (url, item) => {
+  if (url.includes('Doppler')) {
+    item.querySelector('a').href = fixDopplerUrl(url);
   }
 };
 
 const fixDopplerUrl = (url) => {
   let dopplerWordIndex = url.indexOf('Doppler') + 7;
   firstSubStr = url.substring(0, dopplerWordIndex);
-
+  
   let removePhraseIndex = dopplerWordIndex + (url.slice(dopplerWordIndex).indexOf(')') + 1);
   secondSubStr = url.slice(removePhraseIndex);
   return `${firstSubStr}${secondSubStr}`;
-}
+};
 
 const tableObserver = () => {
   const target = document.querySelector(".results");
