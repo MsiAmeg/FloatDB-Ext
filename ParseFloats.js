@@ -10,7 +10,7 @@ const checkItems = () => {
   tableItems.forEach((item) => {
     const cellSkinName = item.cells[1];
     const skinName = cellSkinName.textContent;
-    const itemUrl = item.querySelector('a').href;
+    const itemUrl = item.cells[6].querySelector('a').href;
     const itemFloat = parseFloat(item.cells[2].textContent);
 
     // починка ссылок фаз doppler's
@@ -42,7 +42,7 @@ const isItemCaseHardened = (itemName, item) => {
 
 const isItemDoppler = (url, item) => {
   if (url.includes('Doppler')) {
-    item.querySelector('a').href = fixDopplerUrl(url);
+    item.cells[6].querySelector('a').href = fixDopplerUrl(url);
   }
 };
 
