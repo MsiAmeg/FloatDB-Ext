@@ -1,6 +1,16 @@
 window.onload = function () {
 
   const blueGems = {
+    m9:[
+    "11",
+    "105",
+    "150",
+    "354",
+    "417",
+    "601",
+    "675",
+    "796"
+    ],
     bayonet: [
       "179",
       "321",
@@ -130,16 +140,6 @@ window.onload = function () {
       "902",
       "905"
     ],
-    m9Bayonet:[
-      "11",
-      "105",
-      "150",
-      "354",
-      "417",
-      "601",
-      "675",
-      "796"
-    ],
     navaja:[
       "182",
       "371",
@@ -176,7 +176,7 @@ window.onload = function () {
       "585",
       "634"
     ],
-    shadowDaggers:[
+    daggers:[
       "14",
       "56",
       "80",
@@ -256,7 +256,7 @@ window.onload = function () {
       "891",
       "917"
     ],
-    ak47: {
+    "ak-47": {
       tier1:[
         "151",
         "168",
@@ -364,7 +364,7 @@ window.onload = function () {
         "256"
       ]
     },
-    fiveSeven:[
+    "five-seven":[
       "189",
       "278",
       "363",
@@ -373,7 +373,7 @@ window.onload = function () {
       "868",
       "872"
     ],
-    mac10:[
+    "mac-10":[
       "19",
       "22",
       "80",
@@ -395,16 +395,17 @@ window.onload = function () {
   };
 
   setTimeout(() => {
-    checkItems();
-	  tableObserver();
+    checkItems(blueGems);
+	  tableObserver(blueGems);
   }, 5000);
 };
 
-const checkItems = () => {
+const checkItems = (blueGems) => {
   const tableItems = Array.from(document.querySelector(".mat-table").children[1].children);
   tableItems.forEach((item) => {
     const cellSkinName = item.cells[1];
     const itemName = cellSkinName.querySelector('.prefix').textContent;
+    const cellSkinPattern = item.cells[3];
     const itemPattern = item.cells[3].textContent;
     const skinName = cellSkinName.textContent;
     const itemUrl = (item.cells[6].querySelector('a').href === "undefined") ? "" : item.cells[6].querySelector('a').href;
@@ -415,7 +416,7 @@ const checkItems = () => {
     
 
     // проверка на принадлежности к семейству поверхностной закалки
-    isItemCaseHardened(skinName, cellSkinName, itemName, itemPattern);
+    isItemCaseHardened(skinName, cellSkinName, itemName, itemPattern, cellSkinPattern, blueGems);
     
 
     // проверка на принадлежности к благоприятному для переплаты флоту
@@ -433,15 +434,29 @@ const isItemHasCoolFloat = (itemFloat, item) => {
 };
 
 
-const isItemCaseHardened = (skinName, item, itemName, itemPattern) => {
-  const isBlueGem = (itemName, itemPattern, item) => {
-    console.log(itemPattern);
+const isItemCaseHardened = (skinName, cellSkinName, itemName, itemPattern, cellSkinPattern, blueGems) => {
+  const isBlueGem = (itemName, itemPattern, cellSkinPattern) => {
+    const mathcedWeapon = whatWeapon(itemName, blueGems);
+    if (mathcedWeapon !== "none"){
+      const blueGem = Object.values(blueGems[mathcedWeapon]).find(pattern => pattern == itemPattern);
+      if (typeof blueGem !== "undefined"){
+        cellSkinPattern.style.color = "yellow";
+      };
+    };
   };
 
+  const whatWeapon = (itemName, blueGems) => {
+    for(weapon in blueGems){
+      if (itemName.toLowerCase().includes(weapon)){
+        return weapon;
+      };
+    };
+    return "none";
+  };
 
   if (skinName.includes('Case Hardened')) {
-    item.style.color = "cyan";
-    isBlueGem(itemName, itemPattern, item);
+    cellSkinName.style.color = "cyan";
+    isBlueGem(itemName, itemPattern, cellSkinPattern);
   };
 };
 
@@ -461,12 +476,12 @@ const fixDopplerUrl = (url) => {
   return `${firstSubStr}${secondSubStr}`;
 };
 
-const tableObserver = () => {
+const tableObserver = (blueGems) => {
   const target = document.querySelector(".results");
 
   const observer = new MutationObserver((entries) => {
     if (entries[0].target.classList.contains("search-container") || entries[0].target.tagName == "TBODY") {
-		checkItems();
+		checkItems(blueGems);
     }
   });
 
