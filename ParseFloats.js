@@ -1,17 +1,21 @@
 window.onload = function () {
 
   const blueGems = {
-    m9:[
-    "11",
-    "105",
-    "150",
-    "354",
-    "417",
-    "601",
-    "675",
-    "796"
-    ],
-    bayonet: [
+    m9:{
+      tier1:[
+      "11",
+      "105",
+      "150",
+      "354",
+      "417",
+      "601",
+      "675",
+      "796"
+      ],
+      tier2:[]
+    },
+    bayonet:{
+      tier1:[
       "179",
       "321",
       "442",
@@ -23,8 +27,11 @@ window.onload = function () {
       "698",
       "828",
       "916"
-    ],
-    bowie:[
+      ],
+      tier2:[]
+    },
+    bowie:{
+      tier1:[
       "29",
       "182",
       "358",
@@ -38,8 +45,11 @@ window.onload = function () {
       "928",
       "944",
       "964"
-    ],
-    Butterfly:[
+      ],
+      tier2:[]
+    },
+    Butterfly:{
+      tier1:[
       "182",
       "194",
       "330",
@@ -53,8 +63,11 @@ window.onload = function () {
       "694",
       "838",
       "913"
-    ],
-    classic:[
+      ],
+      tier2:[]
+    },
+    classic:{
+      tier1:[
       "169",
       "180",
       "288",
@@ -67,8 +80,11 @@ window.onload = function () {
       "601",
       "634",
       "651"
-    ],
-    falchion:[
+      ],
+      tier2:[]
+    },
+    falchion:{
+      tier1:[
       "488",
       "494",
       "510",
@@ -82,8 +98,11 @@ window.onload = function () {
       "868",
       "891",
       "917"
-    ],
-    flip:[
+      ],
+      tier2:[]
+    },
+    flip:{
+      tier1:[
       "151",
       "180",
       "262",
@@ -97,8 +116,11 @@ window.onload = function () {
       "698",
       "828",
       "916"
-    ],
-    gut:[
+      ],
+      tier2:[]
+    },
+    gut:{
+      tier1:[
       "165",
       "220",
       "421",
@@ -107,8 +129,11 @@ window.onload = function () {
       "647",
       "928",
       "962"
-    ],
-    huntsman:[
+      ],
+      tier2:[]
+    },
+    huntsman:{
+      tier1:[
       "29",
       "248",
       "306",
@@ -119,8 +144,11 @@ window.onload = function () {
       "798",
       "800",
       "838"
-    ],
-    karambit:[
+      ],
+      tier2:[]
+    },
+    karambit:{
+      tier1:[
       "4",
       "25",
       "57",
@@ -139,8 +167,11 @@ window.onload = function () {
       "888",
       "902",
       "905"
-    ],
-    navaja:[
+      ],
+      tier2:[]
+    },
+    navaja:{
+      tier1:[
       "182",
       "371",
       "398",
@@ -151,8 +182,11 @@ window.onload = function () {
       "720",
       "838",
       "839"
-    ],
-    nomad:[
+      ],
+      tier2:[]
+    },
+    nomad:{
+      tier1:[
       "55",
       "169",
       "403",
@@ -163,8 +197,11 @@ window.onload = function () {
       "700",
       "704",
       "723"
-    ],
-    paracord:[
+      ],
+      tier2:[]
+    },
+    paracord:{
+      tier1:[
       "180",
       "316",
       "403",
@@ -175,8 +212,11 @@ window.onload = function () {
       "583",
       "585",
       "634"
-    ],
-    daggers:[
+      ],
+      tier2:[]
+    },
+    daggers:{
+      tier1:[
       "14",
       "56",
       "80",
@@ -185,8 +225,11 @@ window.onload = function () {
       "417",
       "468",
       "609"
-    ],
-    skeleton:[
+      ],
+      tier2:[]
+    },
+    skeleton:{
+      tier1:[
       "169",
       "403",
       "449",
@@ -198,8 +241,11 @@ window.onload = function () {
       "583",
       "585",
       "681"
-    ],
-    stiletto:[
+      ],
+      tier2:[]
+    },
+    stiletto:{
+      tier1:[
       "182",
       "371",
       "398",
@@ -210,8 +256,11 @@ window.onload = function () {
       "838",
       "913",
       "928"
-    ],
-    survival:[
+      ],
+      tier2:[]
+    },
+    survival:{
+      tier1:[
       "169",
       "403",
       "456",
@@ -222,8 +271,11 @@ window.onload = function () {
       "583",
       "634",
       "681"
-    ],
-    talon:[
+      ],
+      tier2:[]
+    },
+    talon:{
+      tier1:[
       "3",
       "10",
       "55",
@@ -243,8 +295,11 @@ window.onload = function () {
       "899",
       "905",
       "923"
-    ],
-    ursus:[
+      ],
+      tier2:[]
+    },
+    ursus:{
+      tier1:[
       "398",
       "494",
       "510",
@@ -255,7 +310,9 @@ window.onload = function () {
       "838",
       "891",
       "917"
-    ],
+      ],
+      tier2:[]
+    },
     "ak-47": {
       tier1:[
         "151",
@@ -364,34 +421,40 @@ window.onload = function () {
         "256"
       ]
     },
-    "five-seven":[
-      "189",
-      "278",
-      "363",
-      "689",
-      "690",
-      "868",
-      "872"
-    ],
-    "mac-10":[
-      "19",
-      "22",
-      "80",
-      "95",
-      "199",
-      "239",
-      "251",
-      "295",
-      "313",
-      "349",
-      "406",
-      "503",
-      "667",
-      "748",
-      "807",
-      "890",
-      "944"
-    ]
+    "five-seven":{
+      tier1:[
+        "189",
+        "278",
+        "363",
+        "689",
+        "690",
+        "868",
+        "872"
+      ],
+      tier2:[]
+    },
+    "mac-10":{
+      tier1:[
+        "19",
+        "22",
+        "80",
+        "95",
+        "199",
+        "239",
+        "251",
+        "295",
+        "313",
+        "349",
+        "406",
+        "503",
+        "667",
+        "748",
+        "807",
+        "890",
+        "944"
+      ],
+      tier2:[]
+    },
   };
 
   setTimeout(() => {
@@ -438,8 +501,14 @@ const isItemCaseHardened = (skinName, cellSkinName, itemName, itemPattern, cellS
   const isBlueGem = (itemName, itemPattern, cellSkinPattern) => {
     const mathcedWeapon = whatWeapon(itemName, blueGems);
     if (mathcedWeapon !== "none"){
-      const blueGem = Object.values(blueGems[mathcedWeapon]).find(pattern => pattern == itemPattern);
-      if (typeof blueGem !== "undefined"){
+      const tier1 = Object.values(blueGems[mathcedWeapon]["tier1"]).find(pattern => pattern == itemPattern);
+      const tier2 = Object.values(blueGems[mathcedWeapon]["tier2"]).find(pattern => pattern == itemPattern);
+      
+      if (typeof tier1 !== "undefined"){
+        cellSkinPattern.style.color = "cyan";
+      };
+
+      if (typeof tier2 !== "undefined"){
         cellSkinPattern.style.color = "yellow";
       };
     };
