@@ -4,7 +4,7 @@
 Полезное расширение для поиска интересных предметов на сайте floatDB.
 Расширение автоматически помечает цветными метками предметы по критериям: 
 1. Износ - low(< 0.01) / mid(0.15 - 0.18) / high(>=0.76).
-2. Сеймейство - (Doppler/Gamma Doppler/Case Hardened).
+2. Семейство - (Doppler/Gamma Doppler/Case Hardened).
 3. Паттерн - (Emerald/Ruby/Sapphire/Blue Gem(Tiers)).
 
 Исправлены ссылки для предметов Gamma Doppler.
